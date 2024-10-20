@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Welcome to Our Game!</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("img/mainbg.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: #ffcc8e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div ontouchstart="">
+        <div class="button">
+            <a href="topic.html" id="startButton" onclick="playButtonSound(event, 'topic.html')">Start</a>
+        </div>
+        <div class="content"></div>
+        <div class="button">
+            <a href="Settings.html" id="settingsButton" onclick="playButtonSound(event, 'Settings.html')">Setting</a>
+        </div>
+        <div class="content"></div>
+        <div class="button">
+            <a href="Quiztopic.php" id="quizButton" onclick="playButtonSound(event, 'Quiztopic.php')">Quiz</a>
+        </div>
+        <div class="button">
+            <a href="https://www.programiz.com/python-programming/online-compiler/" id="tryItButton" onclick="playButtonSound(event, 'https://www.programiz.com/python-programming/online-compiler/')">Try it</a>
+        </div>
+
+        <input type="checkbox" id="checkboxInput" />
+        <label for="checkboxInput" class="toggleSwitch">
+            <div class="speaker">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
+                    <path
+                        d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z"
+                        style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"
+                    ></path>
+                    <path
+                        d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6"
+                        style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"
+                    ></path>
+                </svg>
+            </div>
+
+            <div class="mute-speaker">
+                <svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
+                    <path
+                        d="m39,14-17,15H6V48H22l17,15z"
+                        fill="#fff"
+                        stroke-linejoin="round"
+                    ></path>
+                    <path
+                        d="m49,26 20,24m0-24-20,24"
+                        fill="#fff"
+                        stroke-linecap="round"
+                    ></path>
+                </svg>
+            </div>
+        </label>
+
+        <audio id="backgroundMusic" loop>
+            <source src="bgm/Gaho Running StartUp OST5 Piano Cover.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="buttonSound" src="bgm/button.mp3" preload="auto"></audio>
+
+        <a href="aboutUs.html" class="about-button" onclick="playButtonSound(event, 'aboutUs.html')">About Us</a>
+
+        <script>
+            function playButtonSound(event, link) {
+                event.preventDefault(); // Prevent the default anchor behavior
+                const buttonSound = document.getElementById('buttonSound');
+                buttonSound.currentTime = 0; // Reset the sound to the beginning
+                
+                // Try playing the sound, then navigate after 1 second as a fallback
+                buttonSound.play().catch(() => {
+                    window.location.href = link;
+                });
+
+                // Navigate to the link after the sound has played or after 1 second
+                setTimeout(() => {
+                    window.location.href = link;
+                }, 1000);
+            }
+
+
+            const checkbox = document.getElementById('checkboxInput');
+            const music = document.getElementById('backgroundMusic');
+
+            checkbox.addEventListener('change', function() {
+                if (checkbox.checked) {
+                    music.pause();
+                } else {
+                    music.play();
+                }
+            });
+
+            // Play music by default when the page loads
+            window.onload = function() {
+                music.play();
+            };
+        </script>
+    </div>
+</div>
+</body>
+</html>

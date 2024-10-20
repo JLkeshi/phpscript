@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <title>CSS</title>
+    
+    <style>
+        /* Existing styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("img/bg2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: #ffcc8e;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+        }
+
+        .left-image-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            padding: 20px;
+        }
+
+        .left-image-container img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .profmain-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 200px 20px;
+        }
+
+        .left-profimage-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 50%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .left-profimage-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .profcontent {
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        /* New styles for right links */
+        .right-links-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 20px;
+            z-index: 1000; /* Ensure it's above other content */
+        }
+
+        .right-link {
+            margin-bottom: 10px;
+        }
+
+        .right-link .fancy {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .right-link .fancy:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Overlay message styles */
+        .overlay-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+            text-align: left;
+        }
+
+        .overlay-content {
+            text-align: center;
+        }
+
+        .overlay-message h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .overlay-message p {
+            font-size: 18px;
+        }
+
+        .overlay-message button {
+            background-color: #fff;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back button -->
+<button id="backButton" class="fancy">
+    <span class="top-key"></span>
+    <span class="text">Back</span>
+    <span class="bottom-key-1"></span>
+    <span class="bottom-key-2"></span>
+</button>
+
+    <div id="main-wrapper" class="wrapper">
+        <!-- Example content (profmain-container) -->
+        <div class="profmain-container">
+            <div class="left-profimage-container">
+                <img id="professorImage" src="" alt="Professor Image" class="proflarge-image">
+            </div>
+            <div class="profcontent">
+        </div>
+
+        <!-- Right links container -->
+        <div class="right-links-container">
+            <div class="right-link">
+                <a id="message1" class="fancy" href="#">
+                    <span class="top-key"></span>
+                    <span class="text">Hi Professor! I'm curious about CSS. Can you explain it to me?</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+            </div>
+            <div class="right-link">
+                <a id="message2" class="fancy" href="#">
+                    <span class="top-key"></span>
+                    <span class="text">How does CSS work with HTML?</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+            </div>
+            <div class="right-link">
+                <a id="message3" class="fancy" href="#">
+                    <span class="top-key"></span>
+                    <span class="text">What are CSS selectors?</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay message containers -->
+    <div id="overlayMessage1" class="overlay-message">
+        <div class="overlay-content">
+            <h2>Message 1</h2>
+            <p>Of course! CSS stands for Cascading Style Sheets. It's a language used to describe the presentation of a document written in HTML or XML, including aspects like layout, colors, fonts, and more.</p>
+            <button id="closeOverlay1">Close</button>
+        </div>
+    </div>
+
+    <div id="overlayMessage2" class="overlay-message">
+        <div class="overlay-content">
+            <h2>Message 2 </h2>
+            <p> CSS works by selecting HTML elements and applying styles to them. You can apply styles directly to elements using inline CSS, in the <head> section using internal CSS, or in separate CSS files linked to your HTML document.</p>
+            <button id="closeOverlay2">Close</button>
+        </div>
+    </div>
+
+    <div id="overlayMessage3" class="overlay-message">
+        <div class="overlay-content">
+            <h2>Message 3 </h2>
+            <p>CSS selectors are patterns used to select and style HTML elements. They can target elements based on their type (e.g., <p> for paragraphs), class (.class-name), ID (#element-id), attributes ([type="text"]), and more complex criteria using combinators like descendant selectors (e.g., div p) or pseudo-classes (e.g.,
+                ).</p>
+            <button id="closeOverlay3">Close</button>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        
+                // Functionality for back button
+                document.getElementById('backButton').addEventListener('click', function() {
+            history.back(); // Go back to previous page in history
+        });
+
+        // Function to show overlay
+        function showOverlay(overlayId) {
+            // Hide all other overlay messages first
+            const overlays = document.querySelectorAll('.overlay-message');
+            overlays.forEach(overlay => {
+                if (overlay.id !== overlayId) {
+                    overlay.style.display = 'none';
+                }
+            });
+
+            // Display the selected overlay
+            const overlay = document.getElementById(overlayId);
+            overlay.style.display = 'block';
+        }
+
+        // Function to close overlay
+        function closeOverlay(overlayId) {
+            const overlay = document.getElementById(overlayId);
+            overlay.style.display = 'none';
+        }
+
+        // Attach click handlers for each message link
+        document.getElementById('message1').addEventListener('click', function(e) {
+            e.preventDefault();
+            showOverlay('overlayMessage1');
+        });
+
+        document.getElementById('message2').addEventListener('click', function(e) {
+            e.preventDefault();
+            showOverlay('overlayMessage2');
+        });
+
+        document.getElementById('message3').addEventListener('click', function(e) {
+            e.preventDefault();
+            showOverlay('overlayMessage3');
+        });
+
+        // Attach close handlers for each close button
+        document.getElementById('closeOverlay1').addEventListener('click', function(e) {
+            e.preventDefault();
+            closeOverlay('overlayMessage1');
+        });
+
+        document.getElementById('closeOverlay2').addEventListener('click', function(e) {
+            e.preventDefault();
+            closeOverlay('overlayMessage2');
+        });
+
+        document.getElementById('closeOverlay3').addEventListener('click', function(e) {
+            e.preventDefault();
+            closeOverlay('overlayMessage3');
+        });
+
+
+        // Example for setting professor image dynamically (from local storage)
+        (function() {
+            const professorImage = localStorage.getItem('selectedProfessor');
+            if (professorImage) {
+                document.getElementById('professorImage').src = professorImage;
+            }
+        })();
+        
+    </script>
+
+    <style>
+     .profmain-container {
+    display: flex;
+    justify-content: space-between; /* Adjusted to space between */
+    align-items: flex-start;
+    padding: 200px 20px;
+}
+
+.left-profimage-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.left-profimage-container img {
+    width: 100%;
+    height: auto;
+}
+
+.profcontent {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.right-link {
+    width: 50%; /* Take up half of the container width */
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    align-items: center;
+    padding-right: 20px; /* Add some padding for spacing */
+}
+
+.right-link .fancy {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.right-link .fancy:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
+
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    (function(){
+    var $mainWrapper = $("#main-wrapper");
+
+    $('.menu-icon').click(function(){
+        $(this).toggleClass('active');
+        $mainWrapper.toggleClass('active');
+    });
+
+    // Retrieve the selected professor's image from local storage
+    const professorImage = localStorage.getItem('selectedProfessor');
+    if (professorImage) {
+        document.getElementById('professorImage').src = professorImage;
+    }
+
+})();
+</script>
+
+<input type="checkbox" id="checkboxInput" />
+<label for="checkboxInput" class="toggleSwitch">
+    <div class="speaker">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
+            <path
+                d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z"
+                style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"
+            ></path>
+            <path
+                d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6"
+                style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"
+            ></path>
+        </svg>
+    </div>
+
+    <div class="mute-speaker">
+        <svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
+            <path
+                d="m39,14-17,15H6V48H22l17,15z"
+                fill="#fff"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="m49,26 20,24m0-24-20,24"
+                fill="#fff"
+                stroke-linecap="round"
+            ></path>
+        </svg>
+    </div>
+</label>
+
+
+
+<audio id="backgroundMusic" loop>
+    <source src="bgm/massobeats - honey jam (royalty free lofi music).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    const checkbox = document.getElementById('checkboxInput');
+    const music = document.getElementById('backgroundMusic');
+
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            music.pause();
+        } else {
+            music.play();
+        }
+    });
+
+    // Play music by default when the page loads
+    window.onload = function() {
+        music.play();
+    };
+</script>
+
+</body>
+</html>

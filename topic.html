@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/topic.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <title>Topic Area</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("img/bg2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: #ffcc8e;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .loading-screen {
+            display: none; /* Hide the loading screen by default */
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back button -->
+<button id="backButton" class="fancy">
+    <span class="top-key"></span>
+    <span class="text">Back</span>
+    <span class="bottom-key-1"></span>
+    <span class="bottom-key-2"></span>
+</button>
+
+<div class="content">
+    <div ontouchstart="">
+        <div class="button">
+            <a href="GameJavascript.html" class="topicButton" onclick="playButtonSound(event, 'GameJavascript.html')">Java Script</a>
+        </div>
+        <div class="button">
+            <a href="game.html" class="topicButton" onclick="playButtonSound(event, 'game.html')">HTML</a>
+        </div>
+        <div class="button">
+            <a href="GameCSS.html" class="topicButton" onclick="playButtonSound(event, 'GameCSS.html')">CSS</a>
+        </div>
+        <div class="button">
+            <a href="GameCpp.html" class="topicButton" onclick="playButtonSound(event, 'GameCpp.html')">C++</a>
+        </div>
+        <div class="button">
+            <a href="GamePhp.html" class="topicButton" onclick="playButtonSound(event, 'GamePhp.html')">Php</a>
+        </div>
+        <div class="button">
+            <a href="Gamepython.html" class="topicButton" onclick="playButtonSound(event, 'Gamepython.html')">Python</a>
+        </div>
+    </div>
+</div>
+
+<div class="loading-screen" id="loadingScreen">
+    <h2>Please Wait...<br></h2>
+    <div class="mosaic-loader">
+        <div class="cell d-1"></div>
+        <div class="cell d-2"></div>
+        <div class="cell d-3"></div>
+        <div class="cell d-4"></div>
+        <div class="cell d-5"></div>
+        <div class="cell d-6"></div>
+        <div class="cell d-7"></div>
+        <div class="cell d-1"></div>
+        <div class="cell d-2"></div>
+        <div class="cell d-3"></div>
+        <div class="cell d-4"></div>
+        <div class="cell d-5"></div>
+        <div class="cell d-6"></div>
+        <div class="cell d-7"></div>
+        <div class="cell d-1"></div>
+        <div class="cell d-2"></div>
+        <div class="cell d-3"></div>
+    </div>
+</div>
+
+<script>
+    // Functionality for back button
+    document.getElementById('backButton').addEventListener('click', function() {
+        history.back(); // Go back to previous page in history
+    });
+
+    // Function to handle button clicks and play sound
+    function playButtonSound(event, link) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        const buttonSound = document.getElementById('buttonSound');
+        buttonSound.currentTime = 0; // Reset the sound to the beginning
+        buttonSound.play(); // Play the button sound
+
+        // Show loading screen
+        const loadingScreen = document.getElementById('loadingScreen');
+        loadingScreen.style.display = 'flex'; // Show loading screen
+
+        // Navigate to the link after a short delay
+        setTimeout(() => {
+            window.location.href = link; // Redirect to the link
+        }, 3000); // 3 seconds delay for loading animation
+    }
+
+    // Checkbox for music control
+    const checkbox = document.getElementById('checkboxInput');
+    const music = document.getElementById('backgroundMusic');
+
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            music.pause();
+        } else {
+            music.play();
+        }
+    });
+
+    // Play music by default when the page loads
+    window.onload = function() {
+        music.play();
+    };
+</script>
+
+<audio id="buttonSound" src="bgm/button.mp3" preload="auto"></audio>
+<audio id="backgroundMusic" loop>
+    <source src="bgm/Gaho Running StartUp OST5 Piano Cover.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" type="text/css" href="css/aboutUs.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("img/DSC_0168.JPG");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+        }
+        .team {
+            padding: 20px;
+        }
+        .team .center h1 {
+            color: white;
+        }
+        .team-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .box {
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            width: 200px;
+        }
+        .box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .icons a {
+            color: white;
+            margin: 0 5px;
+        }
+        .feedback {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .feedback label {
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .feedback label div {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .feedback input[type="radio"] {
+            display: none;
+        }
+        .feedback svg {
+            fill: none;
+            stroke: black;
+            stroke-width: 2px;
+        }
+        .feedback .angry div { background-color: red; }
+        .feedback .sad div { background-color: orange; }
+        .feedback .ok div { background-color: yellow; }
+        .feedback .good div { background-color: lightgreen; }
+        .feedback .happy div { background-color: green; }
+    </style>
+    <script>
+        var nbDrop = 800;
+
+        function randRange(maxNum, minNum) {
+            return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+        }
+
+        function createRain() {
+            for (var i = 0; i < nbDrop; i++) {
+                var dropLeft = randRange(0, window.innerWidth);
+                var dropTop = randRange(-1000, window.innerHeight);
+                $('.rain').append('<div class="drop" id="drop' + i + '"></div>');
+                $('#drop' + i).css('left', dropLeft);
+                $('#drop' + i).css('top', dropTop);
+            }
+        }
+
+        $(document).ready(function() {
+            createRain();
+        });
+    </script>
+</head>
+<body>
+    <section id="rain" class="rain"></section>
+
+    <section class="team">
+        <div class="center">
+            <h1>Our Team</h1>
+        </div>
+             <!-- =========== -->
+        <div class="team-content">
+            <div class="box">
+                <img src="img/03.jpg" alt="Paulina Calida">
+                <h3>Paulina Calida</h3>
+                <h5>FRONT END</h5>
+                <div class="icons">
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="https://www.facebook.com/paulina.calida"><i class="ri-facebook-box-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                </div>
+            </div>
+            <!-- =========== -->
+            <div class="box">
+                <img src="img/04.jpg" alt="Lloyd Combalicer">
+                <h3>Lloyd Combalicer</h3>
+                <h5>BACK END</h5>
+                <div class="icons">
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="https://www.facebook.com/LtmBtheone"><i class="ri-facebook-box-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                </div>
+            </div>
+            <!-- =========== -->
+            <div class="box">
+                <img src="img/01.jpg" alt="Adrian Manaig">
+                <h3>Adrian Manaig</h3>
+                <h5>BACK END</h5>
+                <div class="icons">
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="https://www.facebook.com/adriaaanxxxximaoooo"><i class="ri-facebook-box-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                </div>
+            </div>
+            <!-- =========== -->
+            <div class="box">
+                <img src="img/02.jpg" alt="Lizette Torecampo">
+                <h3>Lizette Torecampo</h3>
+                <h5>FRONT END</h5>
+                <div class="icons">
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="https://www.facebook.com/lizette.torrecampo"><i class="ri-facebook-box-fill"></i></a>
+                    <a href="https://www.instagram.com/llyd_jrnll/"><i class="ri-instagram-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<div class="feedback">
+		<label class="angry">
+			<input type="radio" value="1" name="feedback" />
+			<div>
+				<svg class="eye left">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="eye right">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="mouth">
+					<use xlink:href="#mouth">
+				</svg>
+			</div>
+		</label>
+		<label class="sad">
+			<input type="radio" value="2" name="feedback" />
+			<div>
+				<svg class="eye left">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="eye right">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="mouth">
+					<use xlink:href="#mouth">
+				</svg>
+			</div>
+		</label>
+		<label class="ok">
+			<input type="radio" value="3" name="feedback" />
+			<div></div>
+		</label>
+		<label class="good">
+			<input type="radio" value="4" name="feedback" checked />
+			<div>
+				<svg class="eye left">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="eye right">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="mouth">
+					<use xlink:href="#mouth">
+				</svg>
+			</div>
+		</label>
+		<label class="happy">
+			<input type="radio" value="5" name="feedback" />
+			<div>
+				<svg class="eye left">
+					<use xlink:href="#eye">
+				</svg>
+				<svg class="eye right">
+					<use xlink:href="#eye">
+				</svg>
+			</div>
+		</label>
+	</div>
+			
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 4" id="eye">
+			<path d="M1,1 C1.83333333,2.16666667 2.66666667,2.75 3.5,2.75 C4.33333333,2.75 5.16666667,2.16666667 6,1"></path>
+		</symbol>
+		<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 7" id="mouth">
+			<path d="M1,5.5 C3.66666667,2.5 6.33333333,1 9,1 C11.6666667,1 14.3333333,2.5 17,5.5"></path>
+		</symbol>
+	</svg>
+
+</body>
+</html>

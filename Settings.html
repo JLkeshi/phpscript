@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Settings.css">
+    <title>Settings</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("img/bg2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            background-color: #ffcc8e;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+            <!-- Back button -->
+<button id="backButton" class="fancy">
+    <span class="top-key"></span>
+    <span class="text">Back</span>
+    <span class="bottom-key-1"></span>
+    <span class="bottom-key-2"></span>
+</button>
+    
+    <div class="container">
+        <div class="radio-input">
+            <label class="label">
+                <input type="radio" id="value-1" name="value-radio" value="value-1" checked>
+                <p class="text">Professor 1</p>
+            </label>
+            <label class="label">
+                <input type="radio" id="value-2" name="value-radio" value="value-2">
+                <p class="text">Professor 2</p>
+            </label>
+        </div>
+
+        <div class="content">
+            <img id="professor1" class="center-image visible" src="img/1.gif" alt="Professor 1"> <!-- Default visible image -->
+            <img id="professor2" class="center-image" src="img/2.gif" alt="Professor 2">
+        </div>
+    </div>
+
+    <script>
+
+                    // Functionality for back button
+                    document.getElementById('backButton').addEventListener('click', function() {
+            history.back(); // Go back to previous page in history
+        });
+
+        const professor1 = document.getElementById('professor1');
+        const professor2 = document.getElementById('professor2');
+
+        document.querySelectorAll('.radio-input input').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value === 'value-1') {
+                    professor1.classList.add('visible');
+                    professor2.classList.remove('visible');
+                    localStorage.setItem('selectedProfessor', 'img/1.gif');
+                } else if (this.value === 'value-2') {
+                    professor2.classList.add('visible');
+                    professor1.classList.remove('visible');
+                    localStorage.setItem('selectedProfessor', 'img/2.gif');
+                }
+            });
+        });
+
+        window.onload = function() {
+            const selectedProfessor = localStorage.getItem('selectedProfessor');
+            if (selectedProfessor === 'img/1.gif') {
+                professor1.classList.add('visible');
+                document.querySelector('input[value="value-1"]').checked = true;
+            } else if (selectedProfessor === 'img/2.gif') {
+                professor2.classList.add('visible');
+                document.querySelector('input[value="value-2"]').checked = true;
+            }
+        };
+    </script>
+</body>
+</html>
